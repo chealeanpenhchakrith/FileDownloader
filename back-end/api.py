@@ -3,10 +3,12 @@ from urllib.request import urlretrieve
 import os
 import time
 import logging
+from flask_cors import CORS
 
 PATH='/Users/rithchea/Desktop/Life/Personal Project/FileDownloader/back-end/files'
 
 app = Flask('back-end')
+CORS(app)
 
 @app.route("/")
 def hello_world():
@@ -23,7 +25,7 @@ def get_files():
             filename_list.append({
                 "name": file_name,
                 "size": f"{file_size} bytes",
-                "last modified": readable_time
+                "last_modified": readable_time
             })
     return filename_list
 

@@ -14,6 +14,14 @@ export default function FileCard() {
     last_modified: string;
   }
 
+  async function downloadFile(fileName: string) {
+    try {
+      await axios.get(`http://127.0.0.1:5000/download/${fileName}`);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   async function fetchFiles() {
     try {
       await axios.get("http://127.0.0.1:5000/api/files").then((response) => {

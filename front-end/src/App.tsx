@@ -1,9 +1,11 @@
-import SearchBar from "./SearchBar";
+import SearchBar from "./components/SearchBar";
+import FileCard from "./components/FileCard";
 
 export default function App() {
   return (
     <>
-      <SearchBar></SearchBar>
+      <SearchBar />
+      <FileCard />
     </>
   );
 }

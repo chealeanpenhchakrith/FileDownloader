@@ -1,5 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Card } from "@mui/material";
+import { CardContent } from "@mui/material";
+import CardActions from "@mui/material/CardActions";
+import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import Png from "../assets/icons/Png.png";
 import Json from "../assets/icons/Json.png";
 import Txt from "../assets/icons/Txt.png";
@@ -59,10 +63,22 @@ export default function FileCard() {
       <ul>
         {list.map((file: File) => {
           return (
-            <li key={file.name} className="flex mt-10 items-center">
+            <Card key={file.name} className="flex mt-10 items-cente">
               {matchFormat(file.name)}
-              {file.name}, {file.size}, {file.last_modified}
-            </li>
+              <CardContent>
+                {file.name}, {file.size}, {file.last_modified}
+              </CardContent>
+              <CardActions>
+                <button
+                  className="hover:cursor-grab bg-amber-200"
+                  onClick={() => {
+                    downloadFile(file.name);
+                  }}
+                >
+                  <FileDownloadIcon />
+                </button>
+              </CardActions>
+            </Card>
           );
         })}
       </ul>

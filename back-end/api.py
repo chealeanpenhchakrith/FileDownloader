@@ -2,6 +2,7 @@ from flask import Flask
 from urllib.request import urlretrieve
 import os
 import time
+from datetime import datetime
 import logging
 from flask_cors import CORS
 import sys
@@ -31,13 +32,16 @@ def get_files():
             file_id += 1
             modification_time = os.path.getmtime(f"./files/{file_name}")
             readable_time = time.ctime(modification_time)
+            iso_time = functions.extract_date(readable_time)
+            iso_date = functions.to_iso_date(datetime(int(iso_time[2]), int(iso_time[0]), int(iso_time[1])))
+            final_date = functions.final_date(iso_date)+'T'+iso_time[3]
             file_size = functions.convert_size(os.path.getsize(f"./files/{file_name}"))
             filename_list.append({
                 "id": file_id,
                 "name": file_name,
                 # "size": f"{file_size} bytes",
                 "size": file_size,
-                "last_modified": readable_time
+                "last_modified": final_date
             })
     return filename_list
 

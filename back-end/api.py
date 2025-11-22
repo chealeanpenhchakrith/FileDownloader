@@ -8,7 +8,12 @@ from flask_cors import CORS
 PATH='/Users/rithchea/Desktop/Life/Personal Project/FileDownloader/back-end/files'
 
 app = Flask('back-end')
-CORS(app)
+
+CORS(
+    app,
+    resources={"/*": {"origins": "http://localhost:5173"}},
+    supports_credentials=True,
+)
 
 @app.route("/")
 def hello_world():

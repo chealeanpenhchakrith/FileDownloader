@@ -4,6 +4,9 @@ import os
 import time
 import logging
 from flask_cors import CORS
+import sys
+sys.path.append('functions')
+import functions
 
 PATH='/Users/rithchea/Desktop/Life/Personal Project/FileDownloader/back-end/files'
 
@@ -28,11 +31,12 @@ def get_files():
             file_id += 1
             modification_time = os.path.getmtime(f"./files/{file_name}")
             readable_time = time.ctime(modification_time)
-            file_size = os.path.getsize(f"./files/{file_name}")
+            file_size = functions.convert_size(os.path.getsize(f"./files/{file_name}"))
             filename_list.append({
                 "id": file_id,
                 "name": file_name,
-                "size": f"{file_size} bytes",
+                # "size": f"{file_size} bytes",
+                "size": file_size,
                 "last_modified": readable_time
             })
     return filename_list

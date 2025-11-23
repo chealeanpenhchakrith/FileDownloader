@@ -14,6 +14,7 @@ export default function SearchBar() {
               disableUnderline={true}
               placeholder="Search by file name or type..."
               type="text"
+              id="input"
             ></Input>
           </div>
         </div>

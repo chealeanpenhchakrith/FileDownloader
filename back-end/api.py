@@ -39,6 +39,7 @@ def get_files():
             filename_list.append({
                 "id": file_id,
                 "name": file_name,
+                "type": file_name.split('.')[1],
                 # "size": f"{file_size} bytes",
                 "size": file_size,
                 "last_modified": final_date

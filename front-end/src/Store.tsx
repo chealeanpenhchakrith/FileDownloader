@@ -1,16 +1,20 @@
 import { create } from "zustand";
 
 type State = {
-  filterName: string;
+  filterType: string;
+  fileName: string;
 };
 
 type Action = {
-  updateFilterName: (filterName: State["filterName"]) => void;
+  updateFilterType: (filterType: State["filterType"]) => void;
+  updateFilterName: (fileName: State["fileName"]) => void;
 };
 
 const useStore = create<State & Action>()((set) => ({
-  filterName: "all",
-  updateFilterName: (filterName) => set(() => ({ filterName: filterName })),
+  filterType: "all",
+  fileName: "",
+  updateFilterType: (filterType) => set(() => ({ filterType: filterType })),
+  updateFilterName: (fileName) => set(() => ({ fileName: fileName })),
 }));
 
 export { useStore };

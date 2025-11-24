@@ -18,7 +18,7 @@ export default function CategoryCard() {
   });
   const [list, setList] = useState<File[]>([]);
   const [alignment, setAlignment] = React.useState<string | null>("all");
-  const updateFilterName = useStore((state) => state.updateFilterName);
+  const updateFilterName = useStore((state) => state.updateFilterType);
 
   const handleAlignment = (
     _event: React.MouseEvent<HTMLElement>,

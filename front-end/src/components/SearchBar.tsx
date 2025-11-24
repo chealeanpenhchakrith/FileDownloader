@@ -1,7 +1,9 @@
 import Input from "@mui/material/Input";
 import SearchIcon from "@mui/icons-material/Search";
+import { useStore } from "../Store.tsx";
 
 export default function SearchBar() {
+  const updateFilterName = useStore((state) => state.updateFilterName);
   return (
     <>
       <h1 className="text-4xl font-bold ml-5 mt-5">All Files</h1>
@@ -15,6 +17,7 @@ export default function SearchBar() {
               placeholder="Search by file name or type..."
               type="text"
               id="input"
+              onChange={(e) => updateFilterName(e.target.value)}
             ></Input>
           </div>
         </div>

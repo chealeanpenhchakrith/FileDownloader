@@ -16,6 +16,7 @@ export default function FileCard() {
   const filterName = useStore((state) => state.fileName);
   const filterType = useStore((state) => state.filterType);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   interface File {
     id: number;
@@ -29,6 +30,8 @@ export default function FileCard() {
     try {
       await axios.get(`http://127.0.0.1:5000/download/${fileName}`);
     } catch (err) {
+      setLoading(false);
+      setError(true);
       console.error(err);
     }
   }
@@ -37,11 +40,13 @@ export default function FileCard() {
     try {
       await axios.get("http://127.0.0.1:5000/api/files").then((response) => {
         setTimeout(() => {
-          setList([]);
+          setList(response.data);
           setLoading(false);
         }, 500);
       });
     } catch (err) {
+      setError(true);
+      setLoading(false);
       console.error(err);
     }
   }
@@ -66,6 +71,16 @@ export default function FileCard() {
         return <img src={Json} alt="json" width={50} height={50} />;
         break;
     }
+  }
+
+  function errorMessage() {
+    return (
+      <>
+        <h1 className="ml-5 mt-5">
+          There has been an error in retrieving data
+        </h1>
+      </>
+    );
   }
 
   function filterFile(fileType: string) {
@@ -212,5 +227,5 @@ export default function FileCard() {
       );
     }
   }
-  return <>{filterFile(filterType)}</>;
+  return <>{error ? errorMessage() : filterFile(filterType)}</>;
 }

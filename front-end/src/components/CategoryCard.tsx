@@ -7,24 +7,26 @@ import Stack from "@mui/material/Stack";
 import { createTheme } from "@mui/material";
 import { blue, purple } from "@mui/material/colors";
 import { ThemeProvider } from "@mui/material";
-
-const theme = createTheme({
-  palette: {
-    primary: blue,
-    secondary: purple,
-  },
-});
+import { useStore } from "../Store.tsx";
 
 export default function CategoryCard() {
+  const theme = createTheme({
+    palette: {
+      primary: blue,
+      secondary: purple,
+    },
+  });
   const [list, setList] = useState<File[]>([]);
   const [alignment, setAlignment] = React.useState<string | null>("all");
+  const updateFilterName = useStore((state) => state.updateFilterName);
 
   const handleAlignment = (
-    event: React.MouseEvent<HTMLElement>,
+    _event: React.MouseEvent<HTMLElement>,
     newAlignment: string | null
   ) => {
     if (newAlignment !== null) {
       setAlignment(newAlignment);
+      updateFilterName(newAlignment);
     }
   };
 
@@ -48,7 +50,7 @@ export default function CategoryCard() {
 
   useEffect(() => {
     fetchFiles();
-  });
+  }, []);
 
   return (
     <>

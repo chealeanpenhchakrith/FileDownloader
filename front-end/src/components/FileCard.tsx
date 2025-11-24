@@ -8,15 +8,19 @@ import Png from "../assets/icons/Png.png";
 import Json from "../assets/icons/Json.png";
 import Txt from "../assets/icons/Txt.png";
 import Pdf from "../assets/icons/Pdf.png";
+import { useStore } from "../Store.tsx";
 
 export default function FileCard() {
   const [list, setList] = useState<File[]>([]);
+
+  const filterName = useStore((state) => state.filterName);
 
   interface File {
     id: number;
     name: string;
     size: string;
     last_modified: string;
+    type: string;
   }
 
   async function downloadFile(fileName: string) {
@@ -58,38 +62,93 @@ export default function FileCard() {
         break;
     }
   }
-  return (
-    <>
-      <ul>
-        {list.map((file: File) => {
-          return (
-            <div className="flex items-center" key={file.id}>
-              <Card
-                className="flex mt-5 items-center ml-5 w-105"
-                sx={{ bgcolor: "white", boxShadow: "none", border: "black" }}
-              >
-                <div className="pt-5 pl-5 pb-5">{matchFormat(file.name)}</div>
-                <CardContent className="flex flex-col">
-                  <h1 className="text-2xl font-bold">{file.name}</h1>
-                  <h2 className="text-gray-400 font-light">
-                    {file.last_modified} | {file.size}
-                  </h2>
-                </CardContent>
-              </Card>
-              <div className="flex flex-col justify-center items-center">
-                <button
-                  className="hover:cursor-pointer mt-4 px-5 py-8.5 rounded-xl ml-2"
-                  onClick={() => {
-                    downloadFile(file.name);
-                  }}
-                >
-                  <FileDownloadIcon fontSize="large" />
-                </button>
-              </div>
-            </div>
-          );
-        })}
-      </ul>
-    </>
-  );
+
+  function filterFile(fileType: string) {
+    if (fileType === "all") {
+      return (
+        <>
+          <ul>
+            {list.map((file: File) => {
+              return (
+                <div className="flex items-center" key={file.id}>
+                  <Card
+                    className="flex mt-5 items-center ml-5 w-105"
+                    sx={{
+                      bgcolor: "white",
+                      boxShadow: "none",
+                      border: "black",
+                    }}
+                  >
+                    <div className="pt-5 pl-5 pb-5">
+                      {matchFormat(file.name)}
+                    </div>
+                    <CardContent className="flex flex-col">
+                      <h1 className="text-2xl font-bold">{file.name}</h1>
+                      <h2 className="text-gray-400 font-light">
+                        {file.last_modified} | {file.size}
+                      </h2>
+                    </CardContent>
+                  </Card>
+                  <div className="flex flex-col justify-center items-center">
+                    <button
+                      className="hover:cursor-pointer mt-4 px-5 py-8.5 rounded-xl ml-2"
+                      onClick={() => {
+                        downloadFile(file.name);
+                      }}
+                    >
+                      <FileDownloadIcon fontSize="large" />
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </ul>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <ul>
+            {list
+              .filter((file) => file.type === fileType)
+              .map((file: File) => {
+                return (
+                  <div className="flex items-center" key={file.id}>
+                    <Card
+                      className="flex mt-5 items-center ml-5 w-105"
+                      sx={{
+                        bgcolor: "white",
+                        boxShadow: "none",
+                        border: "black",
+                      }}
+                    >
+                      <div className="pt-5 pl-5 pb-5">
+                        {matchFormat(file.name)}
+                      </div>
+                      <CardContent className="flex flex-col">
+                        <h1 className="text-2xl font-bold">{file.name}</h1>
+                        <h2 className="text-gray-400 font-light">
+                          {file.last_modified} | {file.size}
+                        </h2>
+                      </CardContent>
+                    </Card>
+                    <div className="flex flex-col justify-center items-center">
+                      <button
+                        className="hover:cursor-pointer mt-4 px-5 py-8.5 rounded-xl ml-2"
+                        onClick={() => {
+                          downloadFile(file.name);
+                        }}
+                      >
+                        <FileDownloadIcon fontSize="large" />
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+          </ul>
+        </>
+      );
+    }
+  }
+  return <>{filterFile(filterName)}</>;
 }

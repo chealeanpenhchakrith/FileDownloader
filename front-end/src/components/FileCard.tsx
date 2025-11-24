@@ -9,11 +9,13 @@ import Txt from "../assets/icons/Txt.png";
 import Pdf from "../assets/icons/Pdf.png";
 import { useStore } from "../Store.tsx";
 import Skeleton from "@mui/material/Skeleton";
+import Alert from "@mui/material/Alert";
 
 export default function FileCard() {
   const [list, setList] = useState<File[]>([]);
   const filterName = useStore((state) => state.fileName);
   const filterType = useStore((state) => state.filterType);
+  const [loading, setLoading] = useState(true);
 
   interface File {
     id: number;
@@ -35,7 +37,8 @@ export default function FileCard() {
     try {
       await axios.get("http://127.0.0.1:5000/api/files").then((response) => {
         setTimeout(() => {
-          setList(response.data);
+          setList([]);
+          setLoading(false);
         }, 500);
       });
     } catch (err) {
@@ -66,7 +69,7 @@ export default function FileCard() {
   }
 
   function filterFile(fileType: string) {
-    if (list.length === 0) {
+    if (loading) {
       return (
         <>
           <div className="ml-5 mt-5 flex flex-col gap-3">
@@ -101,6 +104,16 @@ export default function FileCard() {
           </div>
         </>
       );
+    } else {
+      if (list.length === 0) {
+        return (
+          <>
+            <div className="rounded-3xl w-78 ml-5 mt-5">
+              <Alert severity="error">There are no files to display.</Alert>
+            </div>
+          </>
+        );
+      }
     }
     if (fileType === "all") {
       return (

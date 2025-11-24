@@ -2,13 +2,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Card } from "@mui/material";
 import { CardContent } from "@mui/material";
-// import CardActions from "@mui/material/CardActions";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import Png from "../assets/icons/Png.png";
 import Json from "../assets/icons/Json.png";
 import Txt from "../assets/icons/Txt.png";
 import Pdf from "../assets/icons/Pdf.png";
 import { useStore } from "../Store.tsx";
+import Skeleton from "@mui/material/Skeleton";
 
 export default function FileCard() {
   const [list, setList] = useState<File[]>([]);
@@ -34,7 +34,9 @@ export default function FileCard() {
   async function fetchFiles() {
     try {
       await axios.get("http://127.0.0.1:5000/api/files").then((response) => {
-        setList(response.data);
+        setTimeout(() => {
+          setList(response.data);
+        }, 500);
       });
     } catch (err) {
       console.error(err);
@@ -64,6 +66,42 @@ export default function FileCard() {
   }
 
   function filterFile(fileType: string) {
+    if (list.length === 0) {
+      return (
+        <>
+          <div className="ml-5 mt-5 flex flex-col gap-3">
+            <Skeleton
+              animation="wave"
+              variant="rectangular"
+              width={500}
+              height={100}
+              className="rounded-2xl"
+            />
+            <Skeleton
+              animation="wave"
+              variant="rectangular"
+              width={500}
+              height={100}
+              className="rounded-2xl"
+            />
+            <Skeleton
+              animation="wave"
+              variant="rectangular"
+              width={500}
+              height={100}
+              className="rounded-2xl"
+            />
+            <Skeleton
+              animation="wave"
+              variant="rectangular"
+              width={500}
+              height={100}
+              className="rounded-2xl"
+            />
+          </div>
+        </>
+      );
+    }
     if (fileType === "all") {
       return (
         <>

@@ -87,7 +87,7 @@ export default function FileCard() {
     if (loading) {
       return (
         <>
-          <div className="ml-5 mt-5 flex flex-col gap-3">
+          <div className="flex flex-col gap-5">
             <Skeleton
               animation="wave"
               variant="rectangular"
@@ -123,7 +123,7 @@ export default function FileCard() {
       if (list.length === 0) {
         return (
           <>
-            <div className="rounded-3xl w-78 ml-5 mt-5">
+            <div className="rounded-3xl w-78">
               <Alert severity="error">There are no files to display.</Alert>
             </div>
           </>
@@ -133,7 +133,7 @@ export default function FileCard() {
     if (fileType === "all") {
       return (
         <>
-          <ul>
+          <div className="flex flex-col gap-3">
             {list
               .filter((file) => {
                 return file.name
@@ -142,13 +142,16 @@ export default function FileCard() {
               })
               .map((file: File) => {
                 return (
-                  <div className="flex items-center" key={file.id}>
+                  <div
+                    className="flex items-center border border-[#d2d9e0] w-105 rounded-[10px]"
+                    key={file.id}
+                  >
                     <Card
-                      className="flex mt-5 items-center ml-5 w-105"
+                      className="flex items-center w-105"
                       sx={{
                         bgcolor: "white",
                         boxShadow: "none",
-                        border: "black",
+                        borderRadius: "10px",
                       }}
                     >
                       <div className="pt-5 pl-5 pb-5">
@@ -163,7 +166,7 @@ export default function FileCard() {
                     </Card>
                     <div className="flex flex-col justify-center items-center">
                       <button
-                        className="hover:cursor-pointer mt-4 px-5 py-8.5 rounded-xl ml-2"
+                        className="hover:cursor-pointer px-5 py-8.5 rounded-xl"
                         onClick={() => {
                           downloadFile(file.name);
                         }}
@@ -174,13 +177,13 @@ export default function FileCard() {
                   </div>
                 );
               })}
-          </ul>
+          </div>
         </>
       );
     } else {
       return (
         <>
-          <ul>
+          <div className="flex flex-col gap-5 border border-[#d2d9e0] w-105 rounded-[10px]">
             {list
               .filter((file) => file.type === fileType)
               .filter((file) => {
@@ -192,11 +195,12 @@ export default function FileCard() {
                 return (
                   <div className="flex items-center" key={file.id}>
                     <Card
-                      className="flex mt-5 items-center ml-5 w-105"
+                      className="flex items-center w-105"
                       sx={{
                         bgcolor: "white",
                         boxShadow: "none",
-                        border: "black",
+                        borderRadius: "10px",
+                        borderColor: "#d2d9e0",
                       }}
                     >
                       <div className="pt-5 pl-5 pb-5">
@@ -211,7 +215,7 @@ export default function FileCard() {
                     </Card>
                     <div className="flex flex-col justify-center items-center">
                       <button
-                        className="hover:cursor-pointer mt-4 px-5 py-8.5 rounded-xl ml-2"
+                        className="hover:cursor-pointer px-5 py-8.5 rounded-xl"
                         onClick={() => {
                           downloadFile(file.name);
                         }}
@@ -222,7 +226,7 @@ export default function FileCard() {
                   </div>
                 );
               })}
-          </ul>
+          </div>
         </>
       );
     }

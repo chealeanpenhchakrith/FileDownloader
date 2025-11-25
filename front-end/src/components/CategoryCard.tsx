@@ -62,10 +62,16 @@ export default function CategoryCard() {
           color="primary"
         >
           <Stack direction="row" spacing={1}>
-            <ToggleButton value="all">All</ToggleButton>
+            <ToggleButton value="all" sx={{ borderRadius: "10px" }}>
+              All
+            </ToggleButton>
             {list.map((file) => {
               return (
-                <ToggleButton key={file.id} value={file.type}>
+                <ToggleButton
+                  key={file.id}
+                  value={file.type}
+                  sx={{ borderRadius: "10px" }}
+                >
                   {file.type}
                 </ToggleButton>
               );

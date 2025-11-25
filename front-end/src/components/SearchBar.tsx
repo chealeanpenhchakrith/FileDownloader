@@ -1,23 +1,24 @@
 import Input from "@mui/material/Input";
-import SearchIcon from "@mui/icons-material/Search";
 import { useStore } from "../Store.tsx";
+import SearchIcon from "@mui/icons-material/Search";
 
 export default function SearchBar() {
   const updateFilterName = useStore((state) => state.updateFilterName);
   return (
     <>
-      <h1 className="text-4xl font-bold ml-5 mt-5">All Files</h1>
       <div>
-        <div className="border-2 black rounded-2xl w-70 mt-5 ml-5">
-          <div className="ml-1 flex gap-1 items-center">
-            <SearchIcon />
+        <div className="w-65">
+          <div className="flex gap-1 items-center border border-[#d2d9e0] rounded-[10px] py-2 px-3">
+            <SearchIcon sx={{ color: "grey" }} />
             <Input
-              className="w-100"
-              disableUnderline={true}
-              placeholder="Search by file name or type..."
+              disableUnderline
+              placeholder="Search by file name or type"
               type="text"
               id="input"
               onChange={(e) => updateFilterName(e.target.value)}
+              sx={{
+                width: "200px",
+              }}
             ></Input>
           </div>
         </div>

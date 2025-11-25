@@ -7,6 +7,13 @@ import Png from "../assets/icons/Png.png";
 import Json from "../assets/icons/Json.png";
 import Txt from "../assets/icons/Txt.png";
 import Pdf from "../assets/icons/Pdf.png";
+import Doc from "../assets/icons/Doc.png";
+import Xsl from "../assets/icons/Xsl.png";
+import Ppt from "../assets/icons/Ppt.png";
+import Jpeg from "../assets/icons/Jpeg.png";
+import Mp3 from "../assets/icons/Mp3.png";
+import Mp4 from "../assets/icons/Mp4.png";
+import Csv from "../assets/icons/Csv.png";
 import { useStore } from "../Store.tsx";
 import Skeleton from "@mui/material/Skeleton";
 import Alert from "@mui/material/Alert";
@@ -70,6 +77,25 @@ export default function FileCard() {
       case "json":
         return <img src={Json} alt="json" width={50} height={50} />;
         break;
+      case "doc":
+        return <img src={Doc} alt="doc" width={50} height={50} />;
+      case "xsl":
+        return <img src={Xsl} alt="xsl" width={50} height={50} />;
+        break;
+      case "ppt":
+        return <img src={Ppt} alt="ppt" width={50} height={50} />;
+        break;
+      case "jpeg":
+        return <img src={Jpeg} alt="jpeg" width={50} height={50} />;
+        break;
+      case "mp3":
+        return <img src={Mp3} alt="jpeg" width={50} height={50} />;
+        break;
+      case "mp4":
+        return <img src={Mp4} alt="mp4" width={50} height={50} />;
+      case "csv":
+        return <img src={Csv} alt="csv" width={50} height={50} />;
+        break;
     }
   }
 
@@ -88,6 +114,34 @@ export default function FileCard() {
       return (
         <>
           <div className="flex flex-col gap-3">
+            <Skeleton
+              animation="wave"
+              variant="rectangular"
+              width={420}
+              height={105}
+              className="rounded-[10px]"
+            />
+            <Skeleton
+              animation="wave"
+              variant="rectangular"
+              width={420}
+              height={105}
+              className="rounded-[10px]"
+            />
+            <Skeleton
+              animation="wave"
+              variant="rectangular"
+              width={420}
+              height={105}
+              className="rounded-[10px]"
+            />
+            <Skeleton
+              animation="wave"
+              variant="rectangular"
+              width={420}
+              height={105}
+              className="rounded-[10px]"
+            />
             <Skeleton
               animation="wave"
               variant="rectangular"
@@ -183,7 +237,7 @@ export default function FileCard() {
     } else {
       return (
         <>
-          <div className="flex flex-col gap-5 border border-[#e0e0e0] w-105 rounded-[10px]">
+          <div className="flex flex-col gap-5">
             {list
               .filter((file) => file.type === fileType)
               .filter((file) => {
@@ -193,7 +247,10 @@ export default function FileCard() {
               })
               .map((file: File) => {
                 return (
-                  <div className="flex items-center" key={file.id}>
+                  <div
+                    className="flex items-center border border-[#e0e0e0] w-105 rounded-[10px]"
+                    key={file.id}
+                  >
                     <Card
                       className="flex items-center w-105"
                       sx={{

@@ -87,34 +87,34 @@ export default function FileCard() {
     if (loading) {
       return (
         <>
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-3">
             <Skeleton
               animation="wave"
               variant="rectangular"
-              width={500}
-              height={100}
-              className="rounded-2xl"
+              width={420}
+              height={105}
+              className="rounded-[10px]"
             />
             <Skeleton
               animation="wave"
               variant="rectangular"
-              width={500}
-              height={100}
-              className="rounded-2xl"
+              width={420}
+              height={105}
+              className="rounded-[10px]"
             />
             <Skeleton
               animation="wave"
               variant="rectangular"
-              width={500}
-              height={100}
-              className="rounded-2xl"
+              width={420}
+              height={105}
+              className="rounded-[10px]"
             />
             <Skeleton
               animation="wave"
               variant="rectangular"
-              width={500}
-              height={100}
-              className="rounded-2xl"
+              width={420}
+              height={105}
+              className="rounded-[10px]"
             />
           </div>
         </>
@@ -143,7 +143,7 @@ export default function FileCard() {
               .map((file: File) => {
                 return (
                   <div
-                    className="flex items-center border border-[#d2d9e0] w-105 rounded-[10px]"
+                    className="flex items-center border border-[#e0e0e0] w-105 rounded-[10px]"
                     key={file.id}
                   >
                     <Card
@@ -183,7 +183,7 @@ export default function FileCard() {
     } else {
       return (
         <>
-          <div className="flex flex-col gap-5 border border-[#d2d9e0] w-105 rounded-[10px]">
+          <div className="flex flex-col gap-5 border border-[#e0e0e0] w-105 rounded-[10px]">
             {list
               .filter((file) => file.type === fileType)
               .filter((file) => {

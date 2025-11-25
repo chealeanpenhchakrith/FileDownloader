@@ -8,7 +8,7 @@ export default function SearchBar() {
     <>
       <div>
         <div className="w-65">
-          <div className="flex gap-1 items-center border border-[#d2d9e0] rounded-[10px] py-2 px-3">
+          <div className="flex gap-1 items-center border border-[#e0e0e0] rounded-[10px] py-2 px-3">
             <SearchIcon sx={{ color: "grey" }} />
             <Input
               disableUnderline

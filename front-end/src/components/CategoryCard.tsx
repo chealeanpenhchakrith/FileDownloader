@@ -61,7 +61,12 @@ export default function CategoryCard() {
           onChange={handleAlignment}
           color="primary"
         >
-          <Stack direction="row" spacing={1}>
+          <Stack
+            direction="row"
+            spacing={1}
+            useFlexGap
+            sx={{ flexWrap: "wrap" }}
+          >
             <ToggleButton value="all" sx={{ borderRadius: "10px" }}>
               All
             </ToggleButton>

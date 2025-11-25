@@ -26,7 +26,6 @@ import {
   createTheme,
   useColorScheme,
 } from "@mui/material/styles";
-import { Height } from "@mui/icons-material";
 
 function App() {
   const { mode, setMode } = useColorScheme();

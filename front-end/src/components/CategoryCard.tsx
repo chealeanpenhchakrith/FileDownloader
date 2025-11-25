@@ -16,9 +16,9 @@ export default function CategoryCard() {
       secondary: purple,
     },
   });
-  const [list, setList] = useState<File[]>([]);
   const [alignment, setAlignment] = React.useState<string | null>("all");
   const updateFilterName = useStore((state) => state.updateFilterType);
+  const [set, setSet] = useState<string[]>([]);
 
   const handleAlignment = (
     _event: React.MouseEvent<HTMLElement>,
@@ -41,11 +41,21 @@ export default function CategoryCard() {
   async function fetchFiles() {
     try {
       await axios.get("http://127.0.0.1:5000/api/files").then((response) => {
-        setList(response.data);
+        extractFilesType(response.data);
       });
     } catch (err) {
       console.error(err);
     }
+  }
+
+  function extractFilesType(list: File[]) {
+    const temporaryList: string[] = [];
+    list.map((file: File) => {
+      temporaryList.push(file.type);
+    });
+    console.log(temporaryList);
+    const uniqueList = [...new Set<string>(temporaryList)];
+    setSet(uniqueList);
   }
 
   useEffect(() => {
@@ -70,14 +80,14 @@ export default function CategoryCard() {
             <ToggleButton value="all" sx={{ borderRadius: "10px" }}>
               All
             </ToggleButton>
-            {list.map((file) => {
+            {set.map((type) => {
               return (
                 <ToggleButton
-                  key={file.id}
-                  value={file.type}
+                  key={type}
+                  value={type}
                   sx={{ borderRadius: "10px" }}
                 >
-                  {file.type}
+                  {type}
                 </ToggleButton>
               );
             })}

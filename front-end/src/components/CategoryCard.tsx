@@ -4,18 +4,9 @@ import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import axios from "axios";
 import Stack from "@mui/material/Stack";
-import { createTheme } from "@mui/material";
-import { blue, purple } from "@mui/material/colors";
-import { ThemeProvider } from "@mui/material";
 import { useStore } from "../Store.tsx";
 
 export default function CategoryCard() {
-  const theme = createTheme({
-    palette: {
-      primary: blue,
-      secondary: purple,
-    },
-  });
   const [alignment, setAlignment] = React.useState<string | null>("all");
   const updateFilterName = useStore((state) => state.updateFilterType);
   const [set, setSet] = useState<string[]>([]);
@@ -63,36 +54,29 @@ export default function CategoryCard() {
 
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <ToggleButtonGroup
-          value={alignment}
-          exclusive
-          onChange={handleAlignment}
-          color="primary"
-        >
-          <Stack
-            direction="row"
-            spacing={1}
-            useFlexGap
-            sx={{ flexWrap: "wrap" }}
-          >
-            <ToggleButton value="all" sx={{ borderRadius: "10px" }}>
-              All
-            </ToggleButton>
-            {set.map((type) => {
-              return (
-                <ToggleButton
-                  key={type}
-                  value={type}
-                  sx={{ borderRadius: "10px" }}
-                >
-                  {type}
-                </ToggleButton>
-              );
-            })}
-          </Stack>
-        </ToggleButtonGroup>
-      </ThemeProvider>
+      <ToggleButtonGroup
+        value={alignment}
+        exclusive
+        onChange={handleAlignment}
+        color="primary"
+      >
+        <Stack direction="row" spacing={1} useFlexGap sx={{ flexWrap: "wrap" }}>
+          <ToggleButton value="all" sx={{ borderRadius: "10px" }}>
+            All
+          </ToggleButton>
+          {set.map((type) => {
+            return (
+              <ToggleButton
+                key={type}
+                value={type}
+                sx={{ borderRadius: "10px" }}
+              >
+                {type}
+              </ToggleButton>
+            );
+          })}
+        </Stack>
+      </ToggleButtonGroup>
     </>
   );
 }

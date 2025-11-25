@@ -216,9 +216,10 @@ export default function FileCard() {
                     <Card
                       className="flex items-center w-105"
                       sx={{
-                        bgcolor: "white",
+                        bgcolor: "background.default",
                         boxShadow: "none",
-                        borderRadius: "10px",
+                        borderTopLeftRadius: "10px",
+                        borderBottomLeftRadius: "10px",
                       }}
                     >
                       <div className="pt-5 pl-5 pb-5">
@@ -235,6 +236,9 @@ export default function FileCard() {
                       <Button
                         loading={file === update ? true : false}
                         className="hover:cursor-pointer px-5 py-8.5 rounded-xl"
+                        // sx={{
+                        //   bgcolor: "background.default",
+                        // }}
                         onClick={() => {
                           downloadFile(file.name);
                           handleUdpate(file);
@@ -278,10 +282,12 @@ export default function FileCard() {
                     <Card
                       className="flex items-center w-105"
                       sx={{
-                        bgcolor: "white",
+                        bgcolor: "background.default",
                         boxShadow: "none",
-                        borderRadius: "10px",
+                        // borderRadius: "10px",
                         borderColor: "#d2d9e0",
+                        borderTopLeftRadius: "10px",
+                        borderBottomLeftRadius: "10px",
                       }}
                     >
                       <div className="pt-5 pl-5 pb-5">
@@ -298,6 +304,9 @@ export default function FileCard() {
                       <Button
                         loading={file === update ? true : false}
                         className="hover:cursor-pointer px-5 py-8.5 rounded-xl"
+                        sx={{
+                          bgcolor: "background.default",
+                        }}
                         onClick={() => {
                           downloadFile(file.name);
                           handleUdpate(file);

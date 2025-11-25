@@ -53,7 +53,6 @@ export default function CategoryCard() {
     list.map((file: File) => {
       temporaryList.push(file.type);
     });
-    console.log(temporaryList);
     const uniqueList = [...new Set<string>(temporaryList)];
     setSet(uniqueList);
   }

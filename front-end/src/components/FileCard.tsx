@@ -17,6 +17,8 @@ import Csv from "../assets/icons/Csv.png";
 import { useStore } from "../Store.tsx";
 import Skeleton from "@mui/material/Skeleton";
 import Alert from "@mui/material/Alert";
+import Button from "@mui/material/Button";
+import DownloadDoneIcon from "@mui/icons-material/DownloadDone";
 
 export default function FileCard() {
   const [list, setList] = useState<File[]>([]);
@@ -24,6 +26,9 @@ export default function FileCard() {
   const filterType = useStore((state) => state.filterType);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [update, setUpdate] = useState<File>();
+  const [download, setDownload] = useState<File>();
+  const [downloadList, setDownloadList] = useState<string[]>([]);
 
   interface File {
     id: number;
@@ -36,6 +41,7 @@ export default function FileCard() {
   async function downloadFile(fileName: string) {
     try {
       await axios.get(`http://127.0.0.1:5000/download/${fileName}`);
+      setDownloadList((downloadList) => [...downloadList, fileName]);
     } catch (err) {
       setLoading(false);
       setError(true);
@@ -58,6 +64,13 @@ export default function FileCard() {
     }
   }
 
+  function handleUdpate(file: File) {
+    setUpdate(file);
+  }
+
+  function resetUpdate() {
+    setUpdate(undefined);
+  }
   useEffect(() => {
     fetchFiles();
   }, []);
@@ -219,14 +232,25 @@ export default function FileCard() {
                       </CardContent>
                     </Card>
                     <div className="flex flex-col justify-center items-center">
-                      <button
+                      <Button
+                        loading={file === update ? true : false}
                         className="hover:cursor-pointer px-5 py-8.5 rounded-xl"
                         onClick={() => {
                           downloadFile(file.name);
+                          handleUdpate(file);
+                          setTimeout(() => {
+                            resetUpdate();
+                            setDownload(file);
+                          }, 1000);
                         }}
                       >
-                        <FileDownloadIcon fontSize="large" />
-                      </button>
+                        {file === download ||
+                        downloadList.includes(file.name) ? (
+                          <DownloadDoneIcon fontSize="large" />
+                        ) : (
+                          <FileDownloadIcon fontSize="large" />
+                        )}
+                      </Button>
                     </div>
                   </div>
                 );
@@ -271,14 +295,25 @@ export default function FileCard() {
                       </CardContent>
                     </Card>
                     <div className="flex flex-col justify-center items-center">
-                      <button
+                      <Button
+                        loading={file === update ? true : false}
                         className="hover:cursor-pointer px-5 py-8.5 rounded-xl"
                         onClick={() => {
                           downloadFile(file.name);
+                          handleUdpate(file);
+                          setTimeout(() => {
+                            resetUpdate();
+                            setDownload(file);
+                          }, 1000);
                         }}
                       >
-                        <FileDownloadIcon fontSize="large" />
-                      </button>
+                        {file === download ||
+                        downloadList.includes(file.name) ? (
+                          <DownloadDoneIcon fontSize="large" />
+                        ) : (
+                          <FileDownloadIcon fontSize="large" />
+                        )}
+                      </Button>
                     </div>
                   </div>
                 );

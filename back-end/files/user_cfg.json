@@ -1,0 +1,14 @@
+{
+  "userProfile": {
+    "id": "U001",
+    "username": "sysadmin",
+    "status": "active",
+    "roles": ["admin", "developer"],
+    "lastLogin": "2023-11-26T14:30:00Z",
+    "emailNotifications": true
+  },
+  "systemSettings": {
+    "timezone": "UTC",
+    "language": "en-US"
+  }
+}

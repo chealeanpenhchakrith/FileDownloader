@@ -1,0 +1,5 @@
+ID,Date,User,Amount,Currency,Type
+T001,2023-11-01,user_A,120.50,USD,Sale
+T002,2023-11-01,user_B,45.00,EUR,Refund
+T003,2023-11-02,user_C,230.99,GBP,Sale
+T004,2023-11-02,user_A,75.25,USD,Return

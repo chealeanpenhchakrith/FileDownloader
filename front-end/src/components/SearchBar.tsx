@@ -7,7 +7,7 @@ export default function SearchBar() {
   return (
     <>
       <div>
-        <div className="w-65">
+        <div className="w-65 md:w-213">
           <div className="flex gap-1 items-center border border-[#e0e0e0] rounded-[10px] py-2 px-3">
             <SearchIcon sx={{ color: "grey" }} />
             <Input
@@ -17,7 +17,7 @@ export default function SearchBar() {
               id="input"
               onChange={(e) => updateFilterName(e.target.value)}
               sx={{
-                width: "200px",
+                width: [100, 200, 800],
               }}
             ></Input>
           </div>

@@ -115,7 +115,7 @@ export default function FileCard() {
   function errorMessage() {
     return (
       <>
-        <h1 className="ml-5 mt-5">
+        <h1 className="font-bold">
           There has been an error in retrieving data
         </h1>
       </>
@@ -126,7 +126,7 @@ export default function FileCard() {
     if (loading) {
       return (
         <>
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3 md:flex-row md:flex-wrap md:w-213">
             <Skeleton
               animation="wave"
               variant="rectangular"
@@ -190,8 +190,10 @@ export default function FileCard() {
       if (list.length === 0) {
         return (
           <>
-            <div className="rounded-3xl w-78">
-              <Alert severity="error">There are no files to display.</Alert>
+            <div className="w-78 flex flex-col gap-3 md:flex-row md:flex-wrap md:w-213">
+              <Alert severity="error" sx={{ borderRadius: "10px" }}>
+                There are no files to display
+              </Alert>
             </div>
           </>
         );
@@ -200,7 +202,7 @@ export default function FileCard() {
     if (fileType === "all") {
       return (
         <>
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3 md:flex-row md:flex-wrap md:w-213">
             {list
               .filter((file) => {
                 return file.name
@@ -265,7 +267,7 @@ export default function FileCard() {
     } else {
       return (
         <>
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-3 md:flex-row md:flex-wrap md:w-213">
             {list
               .filter((file) => file.type === fileType)
               .filter((file) => {

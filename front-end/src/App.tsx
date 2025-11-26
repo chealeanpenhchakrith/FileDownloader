@@ -18,6 +18,7 @@ function App() {
       return (
         <>
           <button
+            className="hover:cursor-pointer"
             onClick={() => {
               setMode("dark");
             }}
@@ -29,6 +30,7 @@ function App() {
     } else {
       return (
         <button
+          className="hover:cursor-pointer"
           onClick={() => {
             setMode("light");
           }}
@@ -39,9 +41,9 @@ function App() {
     }
   }
 
-  if (!mode) {
-    return null;
-  }
+  // if (!mode) {
+  //   return null;
+  // }
   return (
     <>
       <Box
@@ -58,14 +60,23 @@ function App() {
           height: "auto",
         }}
       >
-        <div className="flex flex-col gap-5">
-          <div className="flex gap-2">
-            {toggleMode()}
-            <h1 className="font-bold text-4xl">All Files</h1>
+        <div className="md:flex md:justify-center">
+          <div className="flex flex-col gap-5">
+            <div className="flex gap-2">
+              {toggleMode()}
+              <h1 className="font-bold text-4xl">All Files</h1>
+            </div>
+            {/* <div className="md:flex md:justify-center md:items-center md:flex-col md:gap-5"> */}
+            <SearchBar />
+            <CategoryCard />
+            <FileCard />
+            {/* </div> */}
+            {/* <div className="md:flex md:justify-center md:items-center md:flex-col md:gap-5">
+            <SearchBar />
+            <CategoryCard />
+            <FileCard />
+          </div> */}
           </div>
-          <SearchBar />
-          <CategoryCard />
-          <FileCard />
         </div>
       </Box>
     </>

@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,8 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>front-end</title>
   </head>
-  <body>
+  <body class="example">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
+
+<style>
+  html {
+    scrollbar-width: none;
+  } /* Firefox */
+  body {
+    -ms-overflow-style: none;
+  } /* IE and Edge */
+  body::-webkit-scrollbar,
+  body::-webkit-scrollbar-button {
+    display: none;
+  } /* Chrome */
+</style>

@@ -20,7 +20,6 @@ A web application that allows users to browse, filter, and download files from a
   - [Starting the Backend](#starting-the-backend)
   - [Starting the Frontend](#starting-the-frontend)
 - [API Examples](#api-examples)
-- [Running Tests](#running-tests)
 - [Technical and UX Choices](#technical-and-ux-choices)
 
 ---

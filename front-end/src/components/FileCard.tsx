@@ -348,9 +348,8 @@ export default function FileCard() {
                         loading={file === update ? true : false}
                         className="hover:cursor-pointer px-5 py-8.5 rounded-xl"
                         sx={{
-                          bgcolor: "background.default",
                           ":hover": {
-                            bgcolor: "black",
+                            bgcolor: "background.default",
                           },
                         }}
                         onClick={() => {

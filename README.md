@@ -2,6 +2,14 @@
 
 A web application that allows users to browse, filter, and download files from a server. Built with a Flask backend and a React + TypeScript frontend with Material UI.
 
+---
+
+<img width="1800" height="1169" alt="Screenshot 2025-11-27 at 3 46 40 PM" src="https://github.com/user-attachments/assets/294c3be6-a107-4c64-ac42-0581b0119f9a" />
+<img width="1800" height="1169" alt="Screenshot 2025-11-27 at 3 46 44 PM" src="https://github.com/user-attachments/assets/336ca451-a6ca-4f0f-84cf-73d7b7cfbd17" />
+<img width="1800" height="1169" alt="Screenshot 2025-11-27 at 3 46 56 PM" src="https://github.com/user-attachments/assets/317522c4-7904-4565-9d36-9e7cf25a4d57" />
+<img width="1800" height="1169" alt="Screenshot 2025-11-27 at 3 47 11 PM" src="https://github.com/user-attachments/assets/d5f40d11-f9f3-4bcb-a7c3-3842caf556e2" />
+<img width="447" height="1107" alt="Screenshot 2025-11-27 at 3 49 51 PM" src="https://github.com/user-attachments/assets/6460e986-e011-4dab-ab6e-f75eee80a93d" />
+
 ## Table of Contents
 
 - [Quick Project Overview](#quick-project-overview)

@@ -182,38 +182,6 @@ curl http://127.0.0.1:5000/
 
 ---
 
-## Running Tests
-
-### Frontend Linting
-
-Run ESLint to check for code quality issues:
-
-```bash
-cd front-end
-npm run lint
-```
-
-### Frontend Build
-
-Build the production version to verify there are no compilation errors:
-
-```bash
-cd front-end
-npm run build
-```
-
-### Manual Testing
-
-1. Start both the backend and frontend servers
-2. Open the frontend URL in your browser
-3. Verify that files are loaded and displayed
-4. Test the search functionality by typing in the search bar
-5. Test filtering by clicking on file type buttons
-6. Test downloading by clicking the download icon on a file
-7. Test dark/light mode toggle
-
----
-
 ## Technical and UX Choices
 
 ### Backend
@@ -242,4 +210,4 @@ npm run build
 - **Category Filters**: Toggle buttons to quickly filter by file type
 - **Download Feedback**: Download icon changes to a checkmark after successful download
 - **Dark/Light Mode**: System-aware theming with manual toggle option for user preference
-- **Responsive Design**: Layout adapts to different screen sizes using CSS Grid and Flexbox
+- **Responsive Design**: Layout adapts to different screen sizes using CSS Flexbox and breakpoints.

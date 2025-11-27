@@ -4,7 +4,8 @@ import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import axios from "axios";
 import Stack from "@mui/material/Stack";
-import { useStore } from "../Store.tsx";
+import { useStore } from "../store/Store.tsx";
+import { type File } from "../interfaces/interface.ts";
 
 export default function CategoryCard() {
   const [alignment, setAlignment] = React.useState<string | null>("all");
@@ -20,14 +21,6 @@ export default function CategoryCard() {
       updateFilterName(newAlignment);
     }
   };
-
-  interface File {
-    id: number;
-    name: string;
-    size: string;
-    type: string;
-    last_modified: string;
-  }
 
   async function fetchFiles() {
     try {

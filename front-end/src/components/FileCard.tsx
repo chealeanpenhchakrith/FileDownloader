@@ -14,11 +14,13 @@ import Jpeg from "../assets/icons/Jpeg.png";
 import Mp3 from "../assets/icons/Mp3.png";
 import Mp4 from "../assets/icons/Mp4.png";
 import Csv from "../assets/icons/Csv.png";
-import { useStore } from "../Store.tsx";
+import { useStore } from "../store/Store.tsx";
 import Skeleton from "@mui/material/Skeleton";
 import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
 import DownloadDoneIcon from "@mui/icons-material/DownloadDone";
+import { type File } from "../interfaces/interface.ts";
+import ErrorCard from "./ErrorCard.tsx";
 
 export default function FileCard() {
   const [list, setList] = useState<File[]>([]);
@@ -29,14 +31,6 @@ export default function FileCard() {
   const [update, setUpdate] = useState<File>();
   const [download, setDownload] = useState<File>();
   const [downloadList, setDownloadList] = useState<string[]>([]);
-
-  interface File {
-    id: number;
-    name: string;
-    size: string;
-    last_modified: string;
-    type: string;
-  }
 
   async function downloadFile(fileName: string) {
     try {
@@ -112,21 +106,67 @@ export default function FileCard() {
     }
   }
 
-  function errorMessage() {
-    return (
-      <>
-        <h1 className="font-bold">
-          There has been an error in retrieving data
-        </h1>
-      </>
-    );
-  }
-
   function filterFile(fileType: string) {
     if (loading) {
       return (
         <>
           <div className="flex flex-col gap-3 md:flex-row md:flex-wrap md:w-213">
+            <Skeleton
+              animation="wave"
+              variant="rectangular"
+              width={420}
+              height={105}
+              className="rounded-[10px]"
+            />
+            <Skeleton
+              animation="wave"
+              variant="rectangular"
+              width={420}
+              height={105}
+              className="rounded-[10px]"
+            />
+            <Skeleton
+              animation="wave"
+              variant="rectangular"
+              width={420}
+              height={105}
+              className="rounded-[10px]"
+            />
+            <Skeleton
+              animation="wave"
+              variant="rectangular"
+              width={420}
+              height={105}
+              className="rounded-[10px]"
+            />
+            <Skeleton
+              animation="wave"
+              variant="rectangular"
+              width={420}
+              height={105}
+              className="rounded-[10px]"
+            />
+            <Skeleton
+              animation="wave"
+              variant="rectangular"
+              width={420}
+              height={105}
+              className="rounded-[10px]"
+            />
+            <Skeleton
+              animation="wave"
+              variant="rectangular"
+              width={420}
+              height={105}
+              className="rounded-[10px]"
+            />
+            <Skeleton
+              animation="wave"
+              variant="rectangular"
+              width={420}
+              height={105}
+              className="rounded-[10px]"
+            />
             <Skeleton
               animation="wave"
               variant="rectangular"
@@ -238,9 +278,11 @@ export default function FileCard() {
                       <Button
                         loading={file === update ? true : false}
                         className="hover:cursor-pointer px-5 py-8.5 rounded-xl"
-                        // sx={{
-                        //   bgcolor: "background.default",
-                        // }}
+                        sx={{
+                          ":hover": {
+                            bgcolor: "background.default",
+                          },
+                        }}
                         onClick={() => {
                           downloadFile(file.name);
                           handleUdpate(file);
@@ -286,7 +328,6 @@ export default function FileCard() {
                       sx={{
                         bgcolor: "background.default",
                         boxShadow: "none",
-                        // borderRadius: "10px",
                         borderColor: "#d2d9e0",
                         borderTopLeftRadius: "10px",
                         borderBottomLeftRadius: "10px",
@@ -308,6 +349,9 @@ export default function FileCard() {
                         className="hover:cursor-pointer px-5 py-8.5 rounded-xl"
                         sx={{
                           bgcolor: "background.default",
+                          ":hover": {
+                            bgcolor: "black",
+                          },
                         }}
                         onClick={() => {
                           downloadFile(file.name);
@@ -334,5 +378,5 @@ export default function FileCard() {
       );
     }
   }
-  return <>{error ? errorMessage() : filterFile(filterType)}</>;
+  return <>{error ? <ErrorCard /> : filterFile(filterType)}</>;
 }

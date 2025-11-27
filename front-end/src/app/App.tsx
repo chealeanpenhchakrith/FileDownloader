@@ -1,6 +1,6 @@
-import SearchBar from "./components/SearchBar";
-import FileCard from "./components/FileCard";
-import CategoryCard from "./components/CategoryCard";
+import SearchBar from "../components/SearchBar";
+import FileCard from "../components/FileCard";
+import CategoryCard from "../components/CategoryCard";
 import Box from "@mui/material/Box";
 import {
   ThemeProvider,

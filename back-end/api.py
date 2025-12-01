@@ -1,11 +1,6 @@
 from flask import Flask
-from urllib.request import urlretrieve
-import os
-import time
-from datetime import datetime
-import logging
 from flask_cors import CORS
-from flask_cors import cross_origin
+from pathlib import Path
 import sys
 sys.path.append('functions')
 import functions
@@ -25,7 +20,7 @@ def get_files():
 
 @app.get('/download/<filename>')
 def download_file(filename):
-    file_path = './files'    
+    downloads_path = str(Path.home() / "Downloads")   
     if (filename):
-        functions.download(f"{file_path}/{filename}", folder_name='download', file_name=f"{filename}")
+        functions.download(f"./files/{filename}", folder_name=f"{downloads_path}", file_name=f"{filename}")
     return 'Ok 200'

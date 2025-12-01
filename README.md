@@ -49,7 +49,7 @@ Before running this application, ensure you have the following installed:
 - **npm**: Comes bundled with Node.js
   - Verify installation: `npm --version`
 
-- **Python**: Version 3.10 or higher
+- **Python**: Version 3.10
   - Download from [https://www.python.org/](https://www.python.org/)
   - Verify installation: `python --version` or `python3 --version`
 
@@ -64,8 +64,8 @@ Before running this application, ensure you have the following installed:
 # Navigate to the backend directory
 cd back-end
 
-# (Optional) Create a virtual environment
-python -m venv venv
+# Create a virtual environment
+python3.10 -m venv venv
 
 # Activate the virtual environment
 # On macOS/Linux:
@@ -99,7 +99,7 @@ The backend is a Flask API server that serves file information and handles downl
 # Navigate to the backend directory
 cd back-end
 
-# (Optional) Activate virtual environment if you created one
+# Activate virtual environment
 source venv/bin/activate  # macOS/Linux
 # or
 venv\Scripts\activate  # Windows

@@ -10,8 +10,6 @@ import sys
 sys.path.append('functions')
 import functions
 
-PATH='./files'
-
 app = Flask(__name__)
 
 CORS(app)
@@ -22,7 +20,7 @@ def hello_world():
 
 @app.get('/api/files')
 def get_files():
-    filename_list = functions.run_get_files(PATH)
+    filename_list = functions.run_get_files('./files')
     return filename_list
 
 @app.get('/download/<filename>')

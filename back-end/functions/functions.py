@@ -1,12 +1,8 @@
-# from datetime import datetime
 import math
 import os
 import time
 from datetime import datetime
 import logging
-
-
-PATH='./files'
 
 def convert_size(size_bytes):
    if size_bytes == 0:

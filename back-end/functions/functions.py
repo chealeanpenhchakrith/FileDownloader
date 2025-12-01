@@ -6,7 +6,7 @@ from datetime import datetime
 import logging
 
 
-PATH='/Users/rithchea/Desktop/Life/Personal Project/FileDownloader/back-end/files'
+PATH='./files'
 
 def convert_size(size_bytes):
    if size_bytes == 0:

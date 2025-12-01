@@ -10,7 +10,7 @@ import sys
 sys.path.append('functions')
 import functions
 
-PATH='/Users/rithchea/Desktop/Life/Personal Project/FileDownloader/back-end/files'
+PATH='./files'
 
 app = Flask(__name__)
 
